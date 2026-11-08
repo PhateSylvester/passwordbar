@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        box-sizing: border-box;
+        margin: 0 auto;
+        text-shadow: 4px 4px 5px gray;
+        font-family: 'Lucida Sans',
+            'Lucida Sans Regular',
+            'Lucida Grande',
+            'Lucida Sans Unicode', Geneva,
+            Verdana, sans-serif;
+        color: aliceblue;
+    }
+
+    body {
+        background-image: url("/INTRO/Home_drill/passwordbar/vida.jpg");
+        background-attachment: scroll;
+        background-position: center;
+        background-size: cover;
+    }
+
+    main {
+        display: grid;
+        place-items: center;
+        box-shadow: -5px 5px 30px gray;
+        padding: 20px;
+        width: 90%;
+        background-color: rgba(0, 0, 0, 0.5);
+        margin: 35% auto;
+        border-radius: 20px;
+        gap: 20px;
+        height: 50vh;
+        font-size: 1.2em;
+    }
+
+    form {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        flex-direction: column;
+    }
+
+    label {
+        font-weight: bold;
+        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        color: aliceblue;
+        font-size: 23px;
+    }
+
+    .container {
+        height: 12px;
+        width: 100%;
+        border: none;
+        height: 25px;
+        background: transparent;
+        border-radius: 10px;
+    }
+
+    #bar {
+        height: 60%;
+        width: 0%;
+        background: red;
+        border-radius: 10px;
+        transition: 0.3s ease;
+    }
+
+    #bar.green {
+        background: green;
+    }
+
+    input {
+        border: none;
+        border-bottom: 2px solid white;
+        background-color: transparent;
+        padding: 20px 10px;
+        font-size: 1rem;
+        height: 30px;
+    }
+
+    input:focus {
+        outline: none;
+        background-color: transparent;
+    }
+
+    input::placeholder {
+        color: rgb(189, 182, 182);
+        text-align: center;
+        font-style: italic;
+    }
+
+    footer {
+        text-align: center;
+        color: black;
+        font-family: sans-serif;
+    }
+
+    @media (min-width: 768px) {
+        body {
+            background-image: url('vidafa1.jpg');
+            background-attachment: fixed;
+            background-position: center;
+            background-size: cover;
+        }
+
+        main {
+            margin: 11% auto;
+        }
+    }
+</style>
+
+<body>
+    <main>
+        <h2>PASSWORD METER</h2>
+        <form action="">
+            <label for="password">
+                Password
+            </label>
+            <input id="password" type="password" placeholder="enter password" maxlength="10">
+            <div class="container">
+                <div id="bar"></div>
+            </div>
+        </form>
+    </main>
+    <footer>
+        Powered by VIDAFA
+    </footer>
+    <script defer>
+        const password = document.querySelector("#password");
+        const bar = document.querySelector("#bar");
+        password.addEventListener("input", () => {
+            let point = password.value.length * 10;
+            if (point > 100)
+                point = 100;
+            bar.style.width = point + "%";
+            bar.classList.toggle("green", point >= 70);
+        });
+    </script>
+</body>
+
+</html>
